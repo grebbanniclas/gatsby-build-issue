@@ -1,7 +1,15 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+const path = require(`path`);
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ actions }) => {
+    const { createPage } = actions;
+
+    const component = path.resolve(`src/template.js`);
+
+    createPage({
+        path: '/',
+        component,
+        context: {
+            title: `My random title - ${Math.random()}`
+        },
+    });
+};
